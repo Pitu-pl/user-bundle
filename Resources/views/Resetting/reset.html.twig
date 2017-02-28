@@ -1,0 +1,53 @@
+{% trans_default_domain 'FOSUserBundle' %}
+{% extends "TheCodeineAdminBundle::_base_layout.html.twig" %}
+{% block body_class %}login-page{% endblock %}
+
+{% block mainContainer %}
+    <div class="content">
+        <div class="col-md-4 col-md-offset-4">
+            <div class="login">
+                <h2 class="text-center">{{ 'change_password.submit'|trans }}</h2>
+
+
+                <div class="login-form">
+                    <form action="{{ path('fos_user_resetting_reset', {'token': token}) }}" method="post" role="form" novalidate>
+                        <input type="hidden" name="fos_user_resetting_form[_token]" value="{{ csrf_token('resetting') }}"/>
+                        <div class="form-group">
+                            <div class="input-append">
+                                <input
+                                    type="password"
+                                    name="fos_user_resetting_form[plainPassword][first]"
+                                    class="form-control login-field"
+                                    placeholder="{{ 'form.new_password'|trans }}"
+                                    id="fos_user_resetting_form[plainPassword][first]"
+                                />
+                                <label class="login-field-icon fui-user" for="fos_user_resetting_form[plainPassword][first]"></label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-append">
+                                <input
+                                        type="password"
+                                        name="fos_user_resetting_form[plainPassword][second]"
+                                        class="form-control login-field"
+                                        placeholder="{{ 'form.new_password_confirmation'|trans }}"
+                                        id="fos_user_resetting_form[plainPassword][second]"
+                                />
+                                <label class="login-field-icon fui-user" for="fos_user_resetting_form[plainPassword][second]"></label>
+                            </div>
+                        </div>
+
+                        <input
+                            type="submit"
+                            id="_submit"
+                            name="_submit"
+                            value="{{ 'resetting.reset.submit'|trans }}"
+                            class="btn btn-primary btn-lg btn-block"
+                        />
+                    </form>
+                    <a href="{{ path('fos_user_security_login') }}">{{ 'security.login.button'|trans({}, 'tuna_admin') }}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock mainContainer %}
