@@ -1,0 +1,39 @@
+{% trans_default_domain 'tuna_admin' %}
+{% extends "TheCodeineAdminBundle::_base_layout.html.twig" %}
+{% block body_class %}login-page{% endblock %}
+
+{% block mainContainer %}
+    <div class="content">
+        <div class="col-md-4 col-md-offset-4">
+            <div class="login">
+                <h2 class="text-center">{{ 'security.resetting.reset_password'|trans }}</h2>
+
+
+                <div class="login-form">
+                    <form action="{{ path('fos_user_resetting_send_email') }}" method="post" role="form" novalidate>
+                        <div class="form-group">
+                            <div class="input-append">
+                                <input
+                                    type="text"
+                                    name="username"
+                                    class="form-control login-field"
+                                    placeholder="{{ 'security.login.name'|trans }}"
+                                    id="login-name"
+                                />
+                                <label class="login-field-icon fui-user" for="login-name"></label>
+                            </div>
+                        </div>
+
+                        <input
+                            type="submit"
+                            id="_submit"
+                            name="_submit"
+                            value="{{ 'security.resetting.reset_password'|trans }}"
+                            class="btn btn-primary btn-lg btn-block"
+                        />
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock mainContainer %}

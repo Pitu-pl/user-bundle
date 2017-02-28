@@ -11,6 +11,24 @@ fos_user_security_logout:
     path: /logout
     defaults: { _controller: FOSUserBundle:Security:logout }
 
+fos_user_resetting_request:
+    path: /resetting
+    defaults: { _controller: FOSUserBundle:Resetting:request }
+
+fos_user_resetting_send_email:
+    path: /send-email
+    defaults: { _controller: FOSUserBundle:Resetting:sendEmail }
+    methods:  [POST]
+
+fos_user_resetting_check_email:
+    path: /check-email
+    defaults: { _controller: FOSUserBundle:Resetting:checkEmail }
+
+fos_user_resetting_reset:
+    path: /reset/{token}
+    defaults: { _controller: FOSUserBundle:Resetting:reset }
+    methods:  [GET, POST]
+
 fos_user_change_password:
     path: /admin/change-password
     defaults: { _controller: FOSUserBundle:ChangePassword:changePassword }
